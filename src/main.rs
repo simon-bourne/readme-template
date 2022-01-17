@@ -30,7 +30,10 @@ fn run_process(cmd: &str) -> Result<String, RenderError> {
     }
 
     if !status.success() {
-        return Err(RenderError::new("Process failed"));
+        return Err(RenderError::new(status.code().map_or_else(
+            || "Process failed".to_owned(),
+            |code| format!("Process exited with code {}", code),
+        )));
     }
 
     Ok(output)
