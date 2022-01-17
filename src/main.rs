@@ -36,7 +36,7 @@ fn run_process(cmd: &str) -> Result<String, RenderError> {
     Ok(output)
 }
 
-fn main() -> Result<(), Box<dyn Error>> {
+fn run() -> Result<(), Box<dyn Error>> {
     let mut reg = Handlebars::new();
     reg.register_helper("include", Box::new(include));
     reg.register_helper("command", Box::new(command));
@@ -47,4 +47,11 @@ fn main() -> Result<(), Box<dyn Error>> {
     reg.render_template_to_write(&template, &"{}", io::stdout())?;
 
     Ok(())
+}
+
+fn main() {
+    match run() {
+        Ok(()) => (),
+        Err(e) => println!("{}", e),
+    }
 }
