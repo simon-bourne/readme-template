@@ -40,6 +40,7 @@ fn run_process(cmd: &str) -> Result<String, RenderError> {
 
 fn run() -> Result<(), Box<dyn Error>> {
     let mut reg = Handlebars::new();
+    reg.set_strict_mode(true);
     reg.register_helper("include", Box::new(include));
     reg.register_helper("shell", Box::new(shell));
 
