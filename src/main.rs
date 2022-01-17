@@ -5,14 +5,13 @@ use std::{
     process::Output,
 };
 
-use execute::shell;
 use handlebars::{handlebars_helper, Handlebars, RenderError};
 
 handlebars_helper!(include: |file: str| { fs::read_to_string(file)? });
-handlebars_helper!(command: |cmd: str| { run_process(cmd)? });
+handlebars_helper!(shell: |cmd: str| { run_process(cmd)? });
 
 fn run_process(cmd: &str) -> Result<String, RenderError> {
-    let mut shell_cmd = shell(cmd);
+    let mut shell_cmd = execute::shell(cmd);
 
     let Output {
         status,
@@ -42,7 +41,7 @@ fn run_process(cmd: &str) -> Result<String, RenderError> {
 fn run() -> Result<(), Box<dyn Error>> {
     let mut reg = Handlebars::new();
     reg.register_helper("include", Box::new(include));
-    reg.register_helper("command", Box::new(command));
+    reg.register_helper("shell", Box::new(shell));
 
     let mut template = String::new();
     io::stdin().read_to_string(&mut template)?;
