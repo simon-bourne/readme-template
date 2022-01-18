@@ -1,9 +1,15 @@
 [package]
 name = "handlebars-cli-ext"
-version = "0.1.0"
+version = "0.0.0"
+authors = ["Simon Bourne <simonbourne@gmail.com>"]
 edition = "2021"
+description="A simple Handlebars CLI interface with some extras"
+homepage="https://github.com/simon-bourne/rust-handlebars-cli-ext"
+repository="https://github.com/simon-bourne/rust-handlebars-cli-ext"
+license = "MIT OR Apache-2.0"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+categories = ["templating"]
+keywords = ["handlebars", "template", "cli"]
 
 [dependencies]
 execute = "0.2.9"
