@@ -127,6 +127,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "handlebars-cli-ext"
+version = "0.1.0"
+dependencies = [
+ "execute",
+ "handlebars",
+ "serde_json",
+]
+
+[[package]]
 name = "itoa"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -218,15 +227,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "47aa80447ce4daf1717500037052af176af5d38cc3e571d9ec1c7353fc10c87d"
 dependencies = [
  "proc-macro2",
-]
-
-[[package]]
-name = "readme-template"
-version = "0.1.0"
-dependencies = [
- "execute",
- "handlebars",
- "serde_json",
 ]
 
 [[package]]
